@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <nav className="flex w-full text-white p-5 items-center justify-evenly">
         <div className="nav-left flex-auto">
-            <h1 className="text-center font-bold text-3xl">Test</h1>
+            <Link href='/'><h1 className="text-center font-bold text-3xl">Test</h1></Link>
         </div>
         <div className="nav-center flex-auto bg-gradient-to-tr from-primary to-secondary rounded-full w-min flex h-10">
         <input

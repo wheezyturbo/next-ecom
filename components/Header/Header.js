@@ -1,10 +1,17 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {FiSearch} from "react-icons/fi";
 import {LuShoppingCart,LuHeart,} from 'react-icons/lu';
 import {CgProfile} from 'react-icons/cg';
 import Link from 'next/link';
+import { CartContext } from '@/context/CartContext';
+
 const Header = () => {
+
+const {cartItems} = useContext(CartContext)
+console.log("cartItems :",cartItems.length)
+
   return (
+
     <nav className="flex w-full text-white p-5 items-center justify-evenly">
         <div className="nav-left flex-auto">
             <Link href='/'><h1 className="text-center font-bold text-3xl">Test</h1></Link>
@@ -16,16 +23,17 @@ const Header = () => {
       placeholder="Search"
       aria-label="Search"
       aria-describedby="button-addon2" />
-      <button className='w-1/12 '>
+      <button className='w-1/12 mr-auto'>
       <FiSearch/>
       </button>
         </div>
         <div className="nav-right flex-auto flex gap-3 w-1/12 text-xl">
-            <Link href='#' className='ml-auto'><LuShoppingCart/></Link>
+            <Link href='/cart' className='ml-auto'><LuShoppingCart/></Link>{cartItems.length}
             <Link href='#'><LuHeart/></Link>
             <Link href='/login' className='mr-auto'><CgProfile/></Link>
         </div>
     </nav>
+
   )
 }
 

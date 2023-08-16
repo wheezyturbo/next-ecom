@@ -15,8 +15,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-background to-secondary">
-      <form className="w-1/4 bg-accent bg-opacity-20 backdrop-blur-md p-8 rounded-lg shadow-lg">
+    <div className="flex justify-center items-center h-screen  bg-gradient-to-b from-background to-primary">
+      <form className="w-1/4 bg-accent bg-opacity-20 p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold mb-6 text-text">Login</h2>
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-text">

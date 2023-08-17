@@ -5,6 +5,7 @@ import React from 'react'
 const page = () => {
   return (
     <>
+    <title>Login</title>
     <LoginSignupPage/>
     </>
   )

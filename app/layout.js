@@ -1,11 +1,10 @@
 'use client'
 import './globals.css'
-import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
 import Header from "@/components/Header/Header";
 import { CartContext } from '@/context/CartContext';
 import { useState } from 'react';
+import { UserProvider } from '@/context/UserContext';
 
 // export const metadata = {
 //   title: 'Create Next App',
@@ -20,12 +19,14 @@ export default function RootLayout({ children }) {
   }
   return (
     <html lang="en">
-
+      <title>e-com</title>
       <body className='bg-background text-text' >
+        <UserProvider/>
         <CartContext.Provider value={props}>
           <Header />
           {children}
         </CartContext.Provider>
+        <UserProvider/>
       </body>
     </html>
   )

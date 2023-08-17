@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
+import { auth } from '@/firebase/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Perform login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // Clear form fields
-    setEmail('');
-    setPassword('');
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      router.push('/');
+    } catch (error) {
+      console.error('Login error:', error.message);
+      setEmail('');
+      setPassword('');
+    }
   };
 
   return (

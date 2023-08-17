@@ -8,7 +8,6 @@ import { CartContext } from '@/context/CartContext';
 const Header = () => {
 
 const {cartItems} = useContext(CartContext)
-console.log("cartItems :",cartItems.length)
 
   return (
 
@@ -28,7 +27,7 @@ console.log("cartItems :",cartItems.length)
       </button>
         </div>
         <div className="nav-right flex-auto flex gap-3 w-1/12 text-xl">
-            <Link href='/cart' className='ml-auto'><LuShoppingCart/></Link>{cartItems.length}
+            <Link href='/cart' className='ml-auto'><LuShoppingCart/></Link>{cartItems.length==0?'':cartItems.length}
             <Link href='#'><LuHeart/></Link>
             <Link href='/login' className='mr-auto'><CgProfile/></Link>
         </div>

@@ -1,30 +1,27 @@
+'use client'
 import React, { useState } from 'react';
-import { auth } from './firebase'; // Import the auth object from your firebase.js
-
+import { auth } from '@/firebase/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [displayName, setDisplayName] = useState('');
+  // const [displayName, setDisplayName] = useState('');
   const [registrationError, setRegistrationError] = useState('');
-
+  const router = useRouter()
   const handleRegister = async (event) => {
     event.preventDefault();
 
     try {
-      const userCredential = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      // Set user's display name
-      await userCredential.user.updateProfile({
-        displayName: displayName,
-      });
+      createUserWithEmailAndPassword(auth, email, password).then(userCredential=>{
+        router.push('/')
+      })
 
       // Clear form fields
       setEmail('');
       setPassword('');
-      setDisplayName('');
+      // setDisplayName('');
       setRegistrationError('');
 
       // You can add your own logic for redirection here
@@ -43,7 +40,7 @@ const RegisterPage = () => {
         {registrationError && (
           <p className="text-red-500 mb-4">{registrationError}</p>
         )}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label htmlFor="displayName" className="block text-sm font-medium text-text">
             Display Name
           </label>
@@ -54,7 +51,7 @@ const RegisterPage = () => {
             onChange={(e) => setDisplayName(e.target.value)}
             className="w-full p-2 border rounded-md bg-transparent text-text focus:outline-none focus:border-blue-400"
           />
-        </div>
+        </div> */}
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-text">
             Email
@@ -87,6 +84,7 @@ const RegisterPage = () => {
           >
             Register
           </button>
+          <Link href='/login' className='text-emerald-400 ml-auto'>Login</Link>
         </div>
       </form>
     </div>

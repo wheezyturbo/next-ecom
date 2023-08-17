@@ -4,11 +4,13 @@ import {LuShoppingCart,LuHeart,} from 'react-icons/lu';
 import {CgProfile} from 'react-icons/cg';
 import Link from 'next/link';
 import { CartContext } from '@/context/CartContext';
+import { UserContext } from '@/context/UserContext';
 
 const Header = () => {
 
 const {cartItems} = useContext(CartContext)
-
+const {user} = useContext(UserContext)
+console.log(user)
   return (
 
     <nav className="flex w-full text-white p-5 items-center justify-evenly">
@@ -29,7 +31,7 @@ const {cartItems} = useContext(CartContext)
         <div className="nav-right flex-auto flex gap-3 w-1/12 text-xl">
             <Link href='/cart' className='ml-auto'><LuShoppingCart/></Link>{cartItems.length==0?'':cartItems.length}
             <Link href='#'><LuHeart/></Link>
-            <Link href='/login' className='mr-auto'><CgProfile/></Link>
+            {user==null?<Link href='/login' className='mr-auto'><CgProfile/></Link>:<Link href='/profile' className='mr-auto flex'><CgProfile/><span className='text-base'>{user.email.split('@')[0]}</span></Link>}
         </div>
     </nav>
 

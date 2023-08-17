@@ -4,7 +4,7 @@ import './globals.css'
 import Header from "@/components/Header/Header";
 import { CartContext } from '@/context/CartContext';
 import { useState } from 'react';
-import { UserProvider } from '@/context/UserContext';
+import { UserContext } from '@/context/UserContext';
 
 // export const metadata = {
 //   title: 'Create Next App',
@@ -13,20 +13,25 @@ import { UserProvider } from '@/context/UserContext';
 
 export default function RootLayout({ children }) {
   const [cartItems,setCartItems] = useState([])
+  const [user,setUser] = useState(null);
   const props = {
     cartItems,
     setCartItems
+  }
+  const userProps = {
+    user,
+    setUser
   }
   return (
     <html lang="en">
       <title>e-com</title>
       <body className='bg-background text-text' >
-        <UserProvider/>
+        <UserContext.Provider value = {userProps}>
         <CartContext.Provider value={props}>
           <Header />
           {children}
         </CartContext.Provider>
-        <UserProvider/>
+        </UserContext.Provider>
       </body>
     </html>
   )

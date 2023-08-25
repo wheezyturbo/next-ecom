@@ -10,7 +10,6 @@ const Header = () => {
 
 const {cartItems} = useContext(CartContext)
 const {user} = useContext(UserContext)
-console.log(user)
   return (
 
     <nav className="flex w-full text-white p-5 items-center justify-evenly">

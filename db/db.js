@@ -1,12 +1,12 @@
 const db = {
-    categories: ['one', 'two', 'three', 'four', 'five'],
+    categories: ['one', 'two', 'three', 'four', 'five','six'],
     products: [
         {
           id:1,
           name: 'prod1',
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac mauris in metus scelerisque posuere. Ut hendrerit metus sit amet efficitur eleifend. Curabitur malesuada euismod nisl at hendrerit. Cras nec risus auctor, fermentum elit et, dapibus ligula. Vivamus hendrerit, mauris ut facilisis vulputate, libero mauris tempus justo, eget volutpat nisi neque a tortor.',
           price: '$10.99',
-          category: 'two'
+          category: 'six'
         },
         {
           id:2,

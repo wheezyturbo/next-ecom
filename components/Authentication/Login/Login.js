@@ -1,13 +1,12 @@
 import { useRouter } from 'next/navigation';
-import React, { useState, useEffect,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { auth } from '@/firebase/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { UserContext } from '@/context/UserContext';
 import Link from 'next/link';
 
-
 const LoginPage = () => {
-  const user = useContext(UserContext)
+  const userContext = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
@@ -17,7 +16,7 @@ const LoginPage = () => {
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      user.setUser(userCredential.user)
+      userContext.setUser(userCredential.user);
       router.push('/');
     } catch (error) {
       console.error('Login error:', error.message);
